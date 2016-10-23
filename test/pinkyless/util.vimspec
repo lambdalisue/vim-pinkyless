@@ -1,0 +1,9 @@
+Describe pinkyless#util
+  Describe #swap()
+    It swaps a dictionary keys and values
+      let d = {'a': 'A', 'b': 'B', 'c': 'C'}
+      let s = pinkyless#util#swap(d)
+      Assert Equals(s, {'A': 'a', 'B': 'b', 'C': 'c'})
+    End
+  End
+End
