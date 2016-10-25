@@ -6,7 +6,7 @@ let s:keyboard.symbol_map = {
       \ ',': '<', '.': '>', '/': '?', '-': '_', '=': '+',
       \ '[': '{', ']': '}', '`': '~', "'": "\"", '\': '|',
       \}
-let s:keyboard.sybmol_map_r = pinkyless#util#swap(s:keyboard.symbol_map)
+let s:keyboard.symbol_map_r = pinkyless#util#swap(s:keyboard.symbol_map)
 
 function! s:keyboard.shift(char) abort
   if a:char =~# '\l'
