@@ -6,13 +6,13 @@ function! pinkyless#capslock#enter(mode) abort
   for key in keys
     let shift = keyboard.shift(key)
     execute printf(
-          \ '%snoremap <buffer> %s %s',
+          \ '%snoremap %s %s',
           \ a:mode,
           \ s:map_escape(key),
           \ s:map_escape(shift),
           \)
     execute printf(
-          \ '%snoremap <buffer> %s %s',
+          \ '%snoremap %s %s',
           \ a:mode,
           \ s:map_escape(shift),
           \ s:map_escape(key),
@@ -21,7 +21,7 @@ function! pinkyless#capslock#enter(mode) abort
   for key in keys(g:pinkyless#capslock#leave_keys)
     let passthrough = g:pinkyless#capslock#leave_keys[key]
     execute printf(
-          \ '%smap <expr><nowait><buffer> %s pinkyless#capslock#leave(%s, %s)',
+          \ '%smap <expr><nowait> %s pinkyless#capslock#leave(%s, %s)',
           \ a:mode,
           \ key,
           \ string(a:mode),
@@ -37,11 +37,11 @@ function! pinkyless#capslock#leave(mode, ...) abort
   let keys = keyboard.keys()
   for key in keys
     let shift = keyboard.shift(key)
-    execute printf('%sunmap <buffer> %s', a:mode, s:map_escape(key))
-    execute printf('%sunmap <buffer> %s', a:mode, s:map_escape(shift))
+    execute printf('%sunmap %s', a:mode, s:map_escape(key))
+    execute printf('%sunmap %s', a:mode, s:map_escape(shift))
   endfor
   for key in keys(g:pinkyless#capslock#leave_keys)
-    execute printf('%sunmap <buffer> %s', a:mode, key)
+    execute printf('%sunmap %s', a:mode, key)
   endfor
   doautocmd <nomodeline> User PinkylessCapslockLeave
   return get(a:000, 0, '')
